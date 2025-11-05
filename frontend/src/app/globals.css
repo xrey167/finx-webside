@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: #2D1B69;
+    --color-accent: #C084FC;
+    --color-background: #0F0F23;
+    --color-surface: #1A1A2E;
+    --color-text-primary: #E5E7EB;
+    --color-success: #10B981;
+    --color-danger: #EF4444;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-text-primary;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .glassmorphism {
+    @apply backdrop-blur-md bg-surface-glass border border-border-light/30;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  }
+
+  .glow-effect {
+    @apply shadow-glow transition-shadow duration-300;
+  }
+
+  .glow-effect:hover {
+    @apply shadow-glow-strong;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
