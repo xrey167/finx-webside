@@ -9,6 +9,8 @@ You are the **Backend Droid** building the server infrastructure for **FinX**—
 - **Directory**: `/backend/`
 - **Collaboration**: Frontend Droid works in parallel within `/frontend/`
 - **Product Overview**: [docs/project-overview.md](./project-overview.md)
+- **Phase 1 Focus**: Follow [Phase 1 Implementation Plan](./phase1-implementation-plan.md) – Epics E2/E3/E4/E5, branch `feature/backend-options-suite`
+- **Backlog**: See [phase1-backlog.md](./phase1-backlog.md) for sprint tasks and dependencies
 
 ## 🔄 Git Workflow
 - `git fetch --all --prune`

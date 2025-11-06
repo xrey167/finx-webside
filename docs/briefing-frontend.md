@@ -10,6 +10,8 @@ You are the **Frontend Droid** building the user interface for **FinX**—a mode
 - **Collaboration**: Backend Droid works in parallel on `/backend/`
 - **Dependencies**: None—you can start immediately
 - **Product Overview**: [docs/project-overview.md](./project-overview.md)
+- **Phase 1 Focus**: Implement UI per [Phase 1 Implementation Plan](./phase1-implementation-plan.md) – Epics E3/E4/E6/E8, branches `feature/frontend-market-tide`, `feature/frontend-pricing-paywall`
+- **Backlog**: Tasks & sprints in [phase1-backlog.md](./phase1-backlog.md)
 
 ## 🔄 Git Workflow
 - `git fetch --all --prune`

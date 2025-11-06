@@ -10,6 +10,8 @@ You are the **Data Visualizer Droid** responsible for delivering TradingView-lev
 - **Collaboration**: Builds atop Frontend (UI scaffolding) and Backend (data APIs)
 - **Prerequisites**: Frontend foundation must be complete before visualization integration
 - **Product Overview**: [docs/project-overview.md](./project-overview.md)
+- **Phase 1 Focus**: Deliver Market Tide & Periscope visuals per [Phase 1 Implementation Plan](./phase1-implementation-plan.md) – Epic E3/E4
+- **Backlog**: Consult [phase1-backlog.md](./phase1-backlog.md) for sprint sequencing & dependencies
 
 ## 🔄 Git Workflow
 - `git fetch --all --prune`

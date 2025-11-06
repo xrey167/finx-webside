@@ -10,6 +10,8 @@ You are the **Full-Stack Integration Droid** tasked with unifying the FinX stack
 - **Collaboration**: Requires coordinated hand-off from Backend, Frontend, and Data Viz droids
 - **Prerequisites**: Foundational frontend/backend features must be in place prior to integration
 - **Product Overview**: [docs/project-overview.md](./project-overview.md)
+- **Phase 1 Focus**: Alerts, entitlements, observability per [Phase 1 Implementation Plan](./phase1-implementation-plan.md) – Epics E7/E8/E9
+- **Backlog**: Reference [phase1-backlog.md](./phase1-backlog.md) for detailed tasks & checkpoints
 
 ## 🔄 Git Workflow
 - `git fetch --all --prune`
