@@ -24,3 +24,10 @@
 ## 4. Übergaben
 - Handoff-Meetings dokumentieren (Datum, Teilnehmende, offene Punkte).
 - Kommentare in Figma nachverfolgen bis `Resolved`.
+
+## 5. Update-Checklist (bei neuem Stand)
+- [ ] Figma-URL auf finalen Link aktualisiert (kein „TBD“).
+- [ ] Status angepasst (`Planned` → `In Progress` → `Approved`).
+- [ ] Notes um Owner & wichtige Hinweise erweitert (API-Verträge, Edge Cases).
+- [ ] Prototyp-Links ergänzt, wenn Interaktionen vorhanden.
+- [ ] Relevante Tickets in `ticket-template-phase1.md` verlinkt.
