@@ -9,8 +9,9 @@
 | Data Visualizations | `feature/dataviz-market-tide` | Data Viz Droid |
 | Alerts & Entitlements | `feature/platform-alerts-entitlements` | Fullstack Droid |
 | Pricing & Paywall UX | `feature/frontend-pricing-paywall` | Frontend Droid (Growth support) |
+| UX Design System | `feature/ux-phase1` | UX Design Droid |
 
-All branches fork from `feature/frontend-foundation` (current integration base).
+All branches fork from `feature/frontend-foundation` (current integration base) and were initialized on 2025-11-06.
 
 ## 1. Sprint Plan Overview (12 Weeks)
 | Sprint | Goal | Key Deliverables | Dependencies |

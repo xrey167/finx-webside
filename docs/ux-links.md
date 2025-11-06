@@ -3,13 +3,13 @@
 ## 1. Figma Dateien
 | Flow | Figma URL | Status | Notes |
 |------|-----------|--------|-------|
-| Unusual Activity Dashboard | _tbd_ | Draft |  |
-| Market Tide Analytics | _tbd_ | Draft |  |
-| Periscope Exposure Ladder | _tbd_ | Draft |  |
-| Political & Insider Feed | _tbd_ | Draft |  |
-| Event Calendar Suite | _tbd_ | Draft |  |
-| Alert Creation Wizard | _tbd_ | Draft |  |
-| Pricing & Trial Paywall | _tbd_ | Draft |  |
+| Unusual Activity Dashboard | https://www.figma.com/file/TBD/FinX-Phase1-Unusual-Activity?type=design | Planned | Owner: UX Droid – add hi-fi screens & annotations |
+| Market Tide Analytics | https://www.figma.com/file/TBD/FinX-Phase1-Market-Tide?type=design | Planned | Include data viz widgets & heatmap behaviour |
+| Periscope Exposure Ladder | https://www.figma.com/file/TBD/FinX-Phase1-Periscope?type=design | Planned | Scenario slider + alert triggers |
+| Political & Insider Feed | https://www.figma.com/file/TBD/FinX-Phase1-Political?type=design | Planned | Story mode narrative flow |
+| Event Calendar Suite | https://www.figma.com/file/TBD/FinX-Phase1-Calendars?type=design | Planned | Subscription sheet, notifications |
+| Alert Creation Wizard | https://www.figma.com/file/TBD/FinX-Phase1-Alerts?type=design | Planned | Validation & success states |
+| Pricing & Trial Paywall | https://www.figma.com/file/TBD/FinX-Phase1-Pricing?type=design | Planned | CTA copy + email previews |
 
 ## 2. Prototypen & Motion
 | Prototype | Link | Scope |
