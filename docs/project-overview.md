@@ -125,3 +125,5 @@ UI-Prinzipien: Glassmorphism-Panels, sanfte Micro-Interactions, Framer-Motion-Tr
 - Plattform skalierbar und releasefähig machen
 
 Diese Übersicht dient als Single Source of Truth für Produktvision, Architektur-Entscheidungen und Roadmap. Spezifische Umsetzungsdetails finden sich in den Rollen-Briefings und technischen Spezifikationen der jeweiligen Teams.
+
+Weitere Details zur Wettbewerbspositionierung und zum Ausbauplan: [docs/product-strategy.md](./product-strategy.md)
