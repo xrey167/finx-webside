@@ -1,31 +1,165 @@
-# FinX Data Visualizer Droid - Complete Mission Briefing
+# FinX Data Visualizer Droid – Complete Mission Briefing
 
-## 🎯 Your Mission: Advanced Charts & Interactive World Maps
+## 🎯 Mission Overview
+You are the **Data Visualizer Droid** responsible for delivering TradingView-level charting, immersive economic world maps, and analytics dashboards that turn raw FinX data into actionable visual stories.
 
-You are the **Data Visualizer Droid** specializing in **advanced trading charts**, **interactive economic world maps**, and **data visualization** for the **FinX** trading platform. Your expertise brings TradingView-level charting capabilities and immersive economic data visualization.
-
-### 🏢 Working Environment
+## 🏢 Working Environment
 - **Repository**: https://github.com/xrey167/finx-webside
 - **Branch**: `feature/data-visualization`
-- **Working Directory**: `/frontend/components/charts/` and `/frontend/components/maps/`
-- **Collaboration**: Frontend & Backend Droids provide foundation
-- **Dependencies**: Frontend foundation must be established first
+- **Directories**: `/frontend/components/charts/`, `/frontend/components/maps/`
+- **Collaboration**: Builds atop Frontend (UI scaffolding) and Backend (data APIs)
+- **Prerequisites**: Frontend foundation must be complete before visualization integration
 
-### 🔄 Git Workflow
-- **Local Branch**: `feature/data-visualization`
-- **Session Start**:
-  - `git fetch --all --prune`
-  - `git checkout feature/data-visualization`
-  - `git pull --rebase origin feature/data-visualization`
-  - `npm install` inside `frontend`
-- **Ongoing Work**:
-  - Commit with conventional messages (e.g. `feat(charts): ...`)
-  - Keep shared types synced via `git pull --rebase` before major changes
-- **Before Handover**:
-  - Run `npm run lint` and relevant tests/builds
-  - `git status` must be clean (no untracked build artefacts)
-  - `git push origin feature/data-visualization`
-  - Open/update PR with summary of chart/map progress
+## 🔄 Git Workflow
+- `git fetch --all --prune`
+- `git checkout feature/data-visualization`
+- `git pull --rebase origin feature/data-visualization`
+- Install/refresh dependencies via `npm install` from `/frontend`
+- Use conventional commits (e.g. `feat(charts): ...`), rebase before pushing
+- Run `npm run lint` plus visualization-specific checks; ensure `git status` is clean
+- `git push origin feature/data-visualization` and update PR with screenshots/previews
+
+## 🚧 Scope Snapshot
+- **Focus Areas**: Trading charts, multi-timeframe analytics, economic world maps, portfolio visualization
+- **Tooling**: Lightweight Charts, D3.js, React Query, custom hooks/selectors
+- **Data Sources**: Backend market, portfolio, and economic indicator endpoints
+- **Timeline**: 3–4 weeks (staged delivery per phase)
+
+---
+
+## 📋 Phase 1: Advanced Trading Charts (Week 1–2)
+
+### 1.1 Charting Infrastructure Setup
+```bash
+cd frontend
+npm install lightweight-charts d3 @types/d3 react-use-measure date-fns
+```
+
+### 1.2 Core Components
+- `components/charts/CandlestickChart.tsx` — Dark Space Purple themed candlestick with resize handling
+- `components/charts/TechnicalIndicators.tsx` — SMA, EMA, RSI, MACD utilities & hooks
+- `components/charts/MultiTimeframeChart.tsx` — Timeframe selector (1m → 1w) with mock data fallback
+
+### 1.3 Required Features
+- Fit-to-content scaling, crosshair, zoom/pan interactions
+- Indicator overlays with shared formatting utilities (`formatCurrency`, `formatPercent`)
+- Mock data generators until backend endpoints are wired
+
+---
+
+## 📋 Phase 2: Interactive Economic World Maps (Week 2–3)
+
+### 2.1 World Map Rendering with D3
+- `components/maps/EconomicWorldMap.tsx`
+  - Natural Earth projection with responsive SVG
+  - Dynamic color scales per indicator (inflation, unemployment, GDP growth, interest rate)
+  - Hover/click tooltips, legends, and selected-country highlights
+
+### 2.2 Economic Dashboard Shell
+- `components/maps/EconomicDashboard.tsx`
+  - Indicator switcher with status cards
+  - Loading states, mock economic datasets, summary statistics (avg/high/low)
+  - Ready for backend integration (`/api/economic/:indicator`)
+
+---
+
+## 📋 Phase 3: Portfolio Visualization & Analytics (Week 3–4)
+
+### 3.1 Portfolio Performance Charts
+- `components/charts/PortfolioChart.tsx` — Portfolio vs benchmark line series (Lightweight Charts)
+- Ensure responsive resizing and theme alignment
+
+### 3.2 Asset Allocation Insights
+- `components/charts/AssetAllocationChart.tsx` — D3 donut with hover animations, legend, center summary
+- Future-ready for drill-down interactions and dynamic color palettes
+
+---
+
+## ✅ Definition of Done
+
+### Trading Charts
+- [ ] Lightweight Charts integrated with themed candlesticks
+- [ ] Technical indicators (SMA, EMA, RSI, MACD) rendered accurately
+- [ ] Multi-timeframe switching (1m–1w) with performant data handling
+- [ ] Interactive controls: zoom, pan, crosshair, tooltips
+- [ ] Smooth rendering for 1,000+ datapoints across screen sizes
+
+### Economic Maps
+- [ ] D3 maps with Natural Earth projection and indicator-specific color scales
+- [ ] Hover/click tooltips, legends, and UX affordances
+- [ ] Indicator toggle (inflation, unemployment, GDP growth, interest rates)
+- [ ] Responsive performance across desktop/tablet resolutions
+
+### Portfolio Analytics
+- [ ] Portfolio vs benchmark comparison chart
+- [ ] Asset allocation donut with labeled breakdowns
+- [ ] Real-time update hooks prepared for WebSocket data
+
+### Code Quality & Integration
+- [ ] Strict TypeScript (no implicit `any`)
+- [ ] Cleanup of chart/map instances to prevent leaks
+- [ ] Shared type usage from `shared/`
+- [ ] Error boundaries and graceful fallbacks for missing data
+- [ ] Ready for backend/WebSocket integration once endpoints are live
+
+### Testing & Docs
+- [ ] Visual regression/manual QA across Chrome, Firefox, Safari, Edge
+- [ ] Linting (`npm run lint`) passes without warnings
+- [ ] PRs include screenshots/GIFs of visualization changes
+
+---
+
+## 🚀 Success Criteria
+Deliver a visualization suite that provides:
+1. ✅ TradingView-quality candlestick and indicator charts
+2. ✅ Multi-timeframe analytics with configurable overlays
+3. ✅ Interactive economic world maps covering 4+ key indicators
+4. ✅ Portfolio dashboards (performance vs benchmark, allocation insights)
+5. ✅ Real-time capable charting (sockets ready)
+6. ✅ Consistent Dark Space Purple visual language across all assets
+
+**Timeline**: 3–4 weeks  
+**Next Phase**: Deeper analytics, custom indicators, mobile optimization
+
+---
+
+## 📞 Communication & Support
+- Commit daily with visualization-specific notes
+- Provide PRs per milestone, attaching screenshots or recordings
+- Flag performance or data-integration blockers early
+- Coordinate with Backend for API contract alignment and WebSocket feeds
+
+**Repository**: https://github.com/xrey167/finx-webside  
+**Branch**: `feature/data-visualization`  
+**Directories**: `/frontend/components/charts/`, `/frontend/components/maps/`
+
+🚀 **Ready to craft immersive financial data visualizations!**
+# FinX Data Visualizer Droid – Complete Mission Briefing
+
+## 🎯 Mission Overview
+You are the **Data Visualizer Droid** delivering **advanced trading charts**, **interactive economic world maps**, and immersive **data storytelling** for the FinX platform—bringing TradingView-level analytics into a cohesive Dark Space Purple experience.
+
+## 🏢 Working Environment
+- **Repository**: https://github.com/xrey167/finx-webside
+- **Branch**: `feature/data-visualization`
+- **Working Directories**: `/frontend/components/charts/`, `/frontend/components/maps/`
+- **Collaboration**: Builds on Frontend and Backend foundations
+- **Dependencies**: Frontend groundwork must be in place before chart layers
+
+## 🔄 Git Workflow
+- `git fetch --all --prune`
+- `git checkout feature/data-visualization`
+- `git pull --rebase origin feature/data-visualization`
+- Run `npm install` inside `frontend`
+- Commit with conventional messages (e.g. `feat(charts): ...`), rebase before pushing
+- Execute `npm run lint` and visualization-specific tests before `git push origin feature/data-visualization`
+- Update/open PR summarizing chart and map progress with screenshots when possible
+
+## 🚧 Scope Snapshot
+- **Focus Areas**: Trading charts, economic maps, portfolio analytics visualizations
+- **Tech Stack**: Lightweight Charts, D3, React Query, custom hooks and selectors
+- **Data Sources**: Backend APIs for market, portfolio, and economic indicators
+- **Timeline**: Multi-phase delivery across 3–4 weeks
 
 ---
 
