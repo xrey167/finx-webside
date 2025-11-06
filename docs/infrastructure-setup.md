@@ -67,6 +67,21 @@ volumes:
   - `EODHD_API_KEY`
   - `LENZ_PARTNER_API_KEY`
   - `CAPITOL_TRADES_TOKEN`
+  - Market data providers (set according to your subscriptions):
+    - `ALPHAVANTAGE_API_KEY`
+    - `BENZINGA_API_KEY`
+    - `FINAGE_API_KEY`
+    - `FINANCIALDATA_API_KEY`
+    - `FINFEED_API_KEY`
+    - `FINNHUB_API_KEY`
+    - `FINVIZ_API_KEY`
+    - `FMP_API_KEY`
+    - `FRED_API_KEY`
+    - `NASDAQDATABASES_API_KEY`
+    - `OPENFIGI_API_KEY`
+    - `POLYGON_API_KEY`
+    - `POLYGON_ACCESS_KEY_ID`
+    - `STOCKDATAORG_API_KEY`
   - `STRIPE_SECRET_KEY`
   - `SENDGRID_API_KEY`
   - `EXPO_ACCESS_TOKEN`
