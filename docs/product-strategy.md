@@ -213,4 +213,4 @@
 ---
 
 Dieses Dokument erweitert die Projektübersicht um konkrete Spezifikationen, UX-Vorgaben und Monetarisierungsrichtlinien für die nächsten Phasen.
-Dieses Strategiepapier ergänzt die [Projektübersicht](./project-overview.md) und dient als Leitfaden für Produkt/Engineering-Roadmap sowie Go-to-Market-Aktivitäten.
+Dieses Strategiepapier ergänzt die [Projektübersicht](./project-overview.md) und dient als Leitfaden für Produkt/Engineering-Roadmap sowie Go-to-Market-Aktivitäten. Konkrete Umsetzungsdetails siehe [Phase 1 Implementation Plan](./phase1-implementation-plan.md).
