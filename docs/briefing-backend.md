@@ -8,6 +8,7 @@ You are the **Backend Droid** building the server infrastructure for **FinX**—
 - **Branch**: `feature/backend-api`
 - **Directory**: `/backend/`
 - **Collaboration**: Frontend Droid works in parallel within `/frontend/`
+- **Product Overview**: [docs/project-overview.md](./project-overview.md)
 
 ## 🔄 Git Workflow
 - `git fetch --all --prune`

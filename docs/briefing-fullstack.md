@@ -9,6 +9,7 @@ You are the **Full-Stack Integration Droid** tasked with unifying the FinX stack
 - **Directories**: project root plus `/docker/`, `/deployment/`, `/scripts/`
 - **Collaboration**: Requires coordinated hand-off from Backend, Frontend, and Data Viz droids
 - **Prerequisites**: Foundational frontend/backend features must be in place prior to integration
+- **Product Overview**: [docs/project-overview.md](./project-overview.md)
 
 ## 🔄 Git Workflow
 - `git fetch --all --prune`

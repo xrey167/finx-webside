@@ -9,6 +9,7 @@ You are the **Data Visualizer Droid** responsible for delivering TradingView-lev
 - **Directories**: `/frontend/components/charts/`, `/frontend/components/maps/`
 - **Collaboration**: Builds atop Frontend (UI scaffolding) and Backend (data APIs)
 - **Prerequisites**: Frontend foundation must be complete before visualization integration
+- **Product Overview**: [docs/project-overview.md](./project-overview.md)
 
 ## 🔄 Git Workflow
 - `git fetch --all --prune`

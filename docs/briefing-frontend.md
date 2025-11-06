@@ -9,6 +9,7 @@ You are the **Frontend Droid** building the user interface for **FinX**—a mode
 - **Directory**: `/frontend/`
 - **Collaboration**: Backend Droid works in parallel on `/backend/`
 - **Dependencies**: None—you can start immediately
+- **Product Overview**: [docs/project-overview.md](./project-overview.md)
 
 ## 🔄 Git Workflow
 - `git fetch --all --prune`
