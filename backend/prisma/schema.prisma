@@ -1,0 +1,127 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  passwordHash  String
+  firstName     String?
+  lastName      String?
+  isVerified    Boolean   @default(false)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  lastLoginAt   DateTime?
+
+  // Relations
+  portfolios    Portfolio[]
+  trades        Trade[]
+  refreshTokens RefreshToken[]
+
+  @@map("users")
+}
+
+model RefreshToken {
+  id        String   @id @default(cuid())
+  token     String   @unique
+  userId    String
+  expiresAt DateTime
+  isRevoked Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  // Relations
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("refresh_tokens")
+}
+
+model Portfolio {
+  id          String   @id @default(cuid())
+  userId      String
+  name        String
+  description String?
+  totalValue  Float    @default(0.0)
+  currency    String   @default("USD")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  user   User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  trades Trade[]
+
+  @@map("portfolios")
+}
+
+model Trade {
+  id          String    @id @default(cuid())
+  userId      String
+  portfolioId String?
+  symbol      String
+  type        TradeType
+  quantity    Float
+  price       Float
+  fees        Float     @default(0.0)
+  totalValue  Float
+  executedAt  DateTime
+  notes       String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  // Relations
+  user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  portfolio Portfolio? @relation(fields: [portfolioId], references: [id], onDelete: SetNull)
+
+  @@map("trades")
+}
+
+model MarketData {
+  id            Int      @id @default(autoincrement())
+  symbol        String
+  name          String
+  price         Float
+  change        Float
+  changePercent Float
+  volume        BigInt
+  marketCap     BigInt?
+  high24h       Float?
+  low24h        Float?
+  timestamp     DateTime
+  source        String
+  createdAt     DateTime @default(now())
+
+  @@unique([symbol, timestamp])
+  @@index([symbol])
+  @@index([timestamp])
+  @@map("market_data")
+}
+
+model EconomicIndicator {
+  id          Int      @id @default(autoincrement())
+  country     String
+  countryCode String
+  indicator   String
+  value       Float
+  unit        String
+  period      String
+  timestamp   DateTime
+  source      String
+  createdAt   DateTime @default(now())
+
+  @@unique([countryCode, indicator, period])
+  @@index([countryCode])
+  @@index([indicator])
+  @@map("economic_indicators")
+}
+
+enum TradeType {
+  BUY
+  SELL
+}

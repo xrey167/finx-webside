@@ -4,3 +4,15 @@ dist/
 build/
 .next/
 *.log
+
+# Nested package artifacts
+**/node_modules/
+**/dist/
+**/.next/
+**/build/
+
+# Shared package build outputs
+shared/**/*.js
+shared/**/*.d.ts
+shared/**/*.js.map
+shared/**/*.d.ts.map
