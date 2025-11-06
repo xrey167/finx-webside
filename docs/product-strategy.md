@@ -68,4 +68,149 @@
 3. Pricing & Trial-Struktur feinjustieren mit Finanzmodell.
 4. Compliance & Risk Review (Insider Signals, Regulatorik, Disclaimer).
 
+---
+
+## Anhang A – Phase 1 MVP Spezifikation (Unusual Activity Suite)
+
+### A1. Options Spike Engine
+- **Datenabdeckung:** US Options (OPRA) für Equities/ETFs; Quelle: EODHD/Lenz & Partner Aggregation.
+- **Trigger-Modelle:**
+  - **Volume Spike:** Optionsvolumen ≥ 3× 30-Tage ADV _oder_ ≥ 5.000 Kontrakte und Notional ≥ 1 Mio USD.
+  - **Sweep Detection:** ≥ 3 Teilfüllungen innerhalb 2 Sek., Pricing aggressiv (Ask/Higher für Calls, Bid/Lower für Puts).
+  - **Open Interest Jumps:** ΔOI ≥ 25 % relativ zum Vortag _und_ absolutes ΔOI ≥ 1.000 Kontrakte.
+  - **Delta Band:** Default Filter Delta ∈ [0.2, 0.7]; optionale Benutzerfilter für OTM/ATM/ITM.
+  - **Ticker Health:** Flagging wenn Optionsvolumen ≥ 2 % des Float / durschnittlichem Tagesvolumen.
+- **Alerting & Storage:**
+  - Echtzeit-Pipeline (≤15 min Delay) mit Kafka/Queue → Alert Service → Push/Email.
+  - Historien-Backfill (6 Monate) zur Visualisierung & Backtesting.
+  - Benutzerdefinierte Watchlists & Trigger-Anpassungen (Phase 1.1 optional).
+
+### A2. Market Tide 2.0
+- **KPIs:**
+  - Put/Call Ratio je Sektor (GICS Level 2) & Underlying Marktkapitalisierung.
+  - Net Gamma Exposure (GEX) & Vanna Exposure berechnet aus Optionskette.
+  - Volumen-skalierte Sentiment Scores (Call Premium vs Put Premium, aggressive vs. passive Trades).
+  - Intraday Flow Heatmap (Top 20 Ticker nach Notional, Top Bull/Bear Flows).
+  - ETF Hedging Monitor (SPY, QQQ, IWM etc.).
+- **Aggregation Intervalle:** 1h, Tagesende, kumulative 5-Tage-Rolling.
+- **Visuals:**
+  - Gauge/Trendline für Gesamtmarkt Put/Call Ratio.
+  - Stacked Bars für Sektor Exposure, time-series für Net Gamma.
+  - Table + Sparkline für Top Ticker.
+- **APIs:** REST `/options/market-tide` + WebSocket Channel für intraday updates.
+
+### A3. Periscope Market Maker Exposure
+- **Ziele:** Visualisierung der Market Maker Delta/Gamma Exposure pro Strike/Expiry, Identifikation von Gamma Flip-Zonen.
+- **Berechnungen:**
+  - Delta Exposure = ∑ (Position * Δ) nach Strike, Weighted nach Notional.
+  - Gamma Exposure = ∑ (Position * Γ * Underlying Price).
+  - Gamma Flip Level = Preis, bei dem aggregiertes Gamma die Null-Linie kreuzt.
+- **Darstellung:**
+  - Strike Ladder (horizontal) mit Farbskala für Gamma (positive/negative).
+  - Price Impact Chart (Underlying Price vs. Net Gamma / Delta).
+  - Alert Flag wenn Spot nähert sich ±1 % Gamma Flip Level.
+- **User Controls:** Ticker, Expirations-Filter, Aggregation Mode (Single Expiry vs. Combined).
+
+### A4. Political & Insider Trading Tracker
+- **Quellen (kostenfrei):** Capitol Trades, Senate Stock Watcher, House Stock Watcher, SEC Form 4/13F (EDGAR API), OpenInsider.
+- **Latenz/Refresh:** täglicher ETL-Job (max. 24 h Verzögerung), sobald möglich near-real-time (EDGAR RSS).
+- **Normalisierung:**
+  - Mapping auf Ticker (CUSIP → Symbol), Partei/Zugehörigkeit, Handelsgröße (Notional), Kategorie (Buy/Sell/Gift).
+  - Impact Score = (Notional Rank + Historische Performance + Politik-Relevanz)/gewichtete Skala 0–100.
+- **UI-Elemente:** Timeline, Filter nach Politiker, Partei, Branche; Integration in Alerts/Watchlists.
+- **Compliance:** Disclaimer (“Informationen aus öffentlichen Quellen, keine Anlageberatung”), Link zu Originalfiling.
+
+### A5. Event-Kalender Suite
+- **Kalender:** Earnings, Trump Tracker, POTUS Schedule, FDA Calendar, Economics Calendar.
+- **Datenpunkte je Eintrag:** Datum/Zeit (Zeitzone), Ticker(s), Kategorie, Impact Level (Low/Mid/High), Erwartete Volatilität (Up/Down Range), Historische Reaktion (z. B. durchschnittliche Post-Earnings-Move), Link zur Quelle/Agenda, Notizfeld.
+- **Abonnements:** Benutzer können einzelne Kalender oder Kombinationen folgen (Toggle + Farbbadge im UI).
+- **Alerts:** Push/E-Mail 24 h & 1 h vor Event, optional Webhook (Phase 3).
+- **Export:** iCal Download, CSV Listenansicht.
+
+### A6. Pricing & Packaging (Phase 1 Launch)
+- Modul: **Options Intelligence** (enthält alle oben genannten Features).
+- Preisanker (Start): 49 €/Monat, 499 €/Jahr (2 Monate gratis). Trial 7 Tage mit Feature-Limits (z. B. 20 Alerts/Tag).
+- Upsell Hooks: In-App Banner, Trial-to-Paid Nudges, All-Access Teaser.
+
+### A7. Delivery Plan (12 Wochen)
+| Sprint | Key Deliverables |
+|--------|------------------|
+| 1–2 | ETL Pipelines (Options, Political/Insider, Calendars), Data Models |
+| 3–4 | Options Trigger Engine, Backfill, Alert Framework |
+| 5–6 | Market Tide Analytics & API, initial Dashboard |
+| 7–8 | Periscope Exposure Visuals & Alerts |
+| 9–10 | Political/Insider UI, Event Calendar MVP |
+| 11 | Pricing/Trial, Paywall Integration, QA |
+| 12 | Beta Launch, Feedback Loop, KPI Baseline |
+
+---
+
+## Anhang B – UX Flow & Wireframe Spezifikation (Phase 1)
+
+### B1. Unusual Activity Dashboard
+1. **Landing View:**
+   - Header Cards: Gesamtmarkt Put/Call, Net Gamma, Top Bullish/Bearish Ticker.
+   - Tabs: `Spikes`, `Market Tide`, `Periscope`, `Political/Insider`, `Calendars`.
+2. **Spikes Tab:** Filterpanel (Ticker, Sektor, Delta, Notional, Date Range). Table mit Heatmap, Detail Drawer (Trade Timeline, Historie, News Links).
+3. **Alert Config Modal:** Schwellenwerte, Delivery Channels, Watchlist-Zuordnung.
+
+### B2. Market Tide UX
+- **Main Chart:** Dual-Axis (Put/Call vs. Net Gamma).
+- **Sektor Grid:** Karten oder Treemap mit Farbkodierung nach Sentiment.
+- **Ticker Drilldown:** Modal mit Zeitreihe, Options Ladder, Link zu Periscope.
+- **Export:** PNG/SVG Download, CSV für Aggregationen.
+
+### B3. Periscope UX
+- **Layout:** Linke Spalte Filter (Expiry, Strike Range), zentrale Gamma Ladder (Stacked Bars), rechte Spalte Price Impact Chart.
+- **Tooltips:** Gamma/Delta Values, Notional, Alert Buttons.
+- **Scenario Slider:** Hypothetische Spot Price Veränderungen ±10 % mit Live-Update.
+
+### B4. Political & Insider Feed
+- **Feed View:** Karten mit Politiker/Insider Profilbild, Partei, Trade Summary, Impact Score, Link zum Filing.
+- **Filters:** Person, Partei, Amt, Impact Score, Ticker, Zeitraum.
+- **Story Mode:** Kombiniert Events mit Kalendern (z. B. vor Earnings + Insider Kauf), generiert Alert-Empfehlung.
+
+### B5. Event Calendar UX
+- **Calendar Grid & List Toggle:** Monats- und Agenda-Ansicht.
+- **Grouping:** By Kalenderart (Farbkodierte Chips). Badges für abonnierte Kalender.
+- **Event Drawer:** Details, Historie (z. B. Earnings Surprise Tabelle), Buttons `Add to Watchlist`, `Create Alert`, `Export iCal`.
+- **Notification Settings:** Pro Kalender, Zeitversatz, Kanal.
+
+### B6. Responsive Considerations
+- Mobile (Phase 3) vorbereitet: Card-stacked Layout, Quick Filters, Swipe Tabs.
+- Multi-Monitor (Web): Dockable Panels (Spikes + Periscope parallel), Layout Presets.
+
+---
+
+## Anhang C – Pricing, Trials & Compliance
+
+### C1. Pricing Framework
+- **Module Pricing (Startwerte):**
+  - Options Intelligence: 49 €/Monat oder 499 €/Jahr.
+  - Seasonality Analytics (Phase 2): 39 €/Monat oder 399 €/Jahr.
+  - Social Signals (Phase 2): 29 €/Monat oder 299 €/Jahr.
+  - All-Access: 99 €/Monat oder 999 €/Jahr.
+- **Trials:** 7 Tage kostenlos pro Modul, All-Access 14 Tage (Requires Payment Method, Cancel Anytime).
+- **Upsell:** In-App Usage Gates (z. B. mehr als 5 gespeicherte Filter), Educational Email Drip.
+
+### C2. Conversion & Retention Hooks
+- Onboarding Checklist, Feature Tours, Daily Recap Email.
+- Leaderboards/Community gated hinter Modul-Lizenz.
+- Referral Programm (Monat gratis für beide Seiten, Phase 2).
+
+### C3. Compliance & Legal
+- **Disclaimers:** “Keine Anlageberatung”; in jeder Alert-Mail und UI prominent.
+- **Data Licensing:** Prüfen Terms von Capitol Trades, Senate Stock Watcher, EDGAR – sicherstellen Attribution.
+- **Usage Monitoring:** Rate Limiting für API/Downloads; Logging für Alerts.
+- **Privacy:** GDPR-konforme Speicherung (Nur notwendige PII, Opt-in für Marketing).
+- **Political/Insider Content:** Automatisierte QA-Kontrollen (Duplicates, False Matches), Eskalationspfad bei Beschwerden.
+
+### C4. Risk & Security
+- 2FA optional ab Phase 1, Pflicht ab Phase 3 für Signal-Anbieter.
+- API-Key Management für Webhooks (Phase 3).
+- Incident Response Playbook (Phase 1 Draft, Phase 2 Hardened).
+
+---
+
+Dieses Dokument erweitert die Projektübersicht um konkrete Spezifikationen, UX-Vorgaben und Monetarisierungsrichtlinien für die nächsten Phasen.
 Dieses Strategiepapier ergänzt die [Projektübersicht](./project-overview.md) und dient als Leitfaden für Produkt/Engineering-Roadmap sowie Go-to-Market-Aktivitäten.
