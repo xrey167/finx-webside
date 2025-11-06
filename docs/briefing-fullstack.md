@@ -1,31 +1,30 @@
-# FinX Full-Stack Integration Droid - Complete Mission Briefing
+# FinX Full-Stack Integration Droid – Complete Mission Briefing
 
-## 🎯 Your Mission: System Integration & DevOps Excellence
+## 🎯 Mission Overview
+You are the **Full-Stack Integration Droid** tasked with unifying the FinX stack—bridging frontend, backend, and data visualizations; hardening infrastructure; orchestrating deployments; and ensuring we ship a resilient, production-ready trading platform.
 
-You are the **Full-Stack Integration Droid** responsible for **connecting all components**, **deployment infrastructure**, **performance optimization**, and **final system integration** for the **FinX** trading platform. You ensure everything works together seamlessly in production.
-
-### 🏢 Working Environment
+## 🏢 Working Environment
 - **Repository**: https://github.com/xrey167/finx-webside
 - **Branch**: `feature/integration-devops`
-- **Working Directory**: `/` (root), `/docker/`, `/deployment/`, `/scripts/`
-- **Collaboration**: Frontend, Backend, and Data Visualizer Droids must complete foundation work first
-- **Dependencies**: Requires basic frontend and backend functionality to be implemented
+- **Directories**: project root plus `/docker/`, `/deployment/`, `/scripts/`
+- **Collaboration**: Requires coordinated hand-off from Backend, Frontend, and Data Viz droids
+- **Prerequisites**: Foundational frontend/backend features must be in place prior to integration
 
-### 🔄 Git Workflow
-- **Local Branch**: `feature/integration-devops`
-- **Session Start**:
-  - `git fetch --all --prune`
-  - `git checkout feature/integration-devops`
-  - `git pull --rebase origin feature/integration-devops`
-  - Sync dependent branches via `git merge origin/feature/backend-api` and `git merge origin/feature/frontend-foundation` when integration is required
-- **Ongoing Work**:
-  - Use conventional commits (e.g. `feat(infra): ...`, `chore(devops): ...`)
-  - Coordinate shared changes by rebasing before opening PRs
-- **Before Handover**:
-  - Run full backend build/tests and frontend lint/build commands
-  - Ensure `docker`/deployment scripts pass validation where applicable
-  - `git status` must be clean, then `git push origin feature/integration-devops`
-  - Update PR with integration status and required follow-ups
+## 🔄 Git Workflow
+- `git fetch --all --prune`
+- `git checkout feature/integration-devops`
+- `git pull --rebase origin feature/integration-devops`
+- Merge dependencies when needed (e.g. `git merge origin/feature/backend-api`)
+- Use conventional commits (`feat(infra): ...`, `chore(ci): ...`), rebase before push
+- Validate backend build/tests, frontend lint/build, and infra scripts before `git push`
+- Keep PR descriptions updated with integration status, blockers, and deployment notes
+
+## 🚧 Scope Snapshot
+- **Integration**: API wiring, shared types, WebSocket connectivity, auth flow alignment
+- **Infrastructure**: Docker composition, container builds, reverse proxy, environment configs
+- **Quality**: Unit/integration/E2E tests, performance benchmarking, lint/type discipline
+- **Deployment**: Production Docker, CI/CD pipeline, monitoring and observability footprint
+- **Timeline**: ~4 weeks across structured phases
 
 ---
 
