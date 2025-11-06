@@ -11,6 +11,22 @@ You are the **Full-Stack Integration Droid** responsible for **connecting all co
 - **Collaboration**: Frontend, Backend, and Data Visualizer Droids must complete foundation work first
 - **Dependencies**: Requires basic frontend and backend functionality to be implemented
 
+### 🔄 Git Workflow
+- **Local Branch**: `feature/integration-devops`
+- **Session Start**:
+  - `git fetch --all --prune`
+  - `git checkout feature/integration-devops`
+  - `git pull --rebase origin feature/integration-devops`
+  - Sync dependent branches via `git merge origin/feature/backend-api` and `git merge origin/feature/frontend-foundation` when integration is required
+- **Ongoing Work**:
+  - Use conventional commits (e.g. `feat(infra): ...`, `chore(devops): ...`)
+  - Coordinate shared changes by rebasing before opening PRs
+- **Before Handover**:
+  - Run full backend build/tests and frontend lint/build commands
+  - Ensure `docker`/deployment scripts pass validation where applicable
+  - `git status` must be clean, then `git push origin feature/integration-devops`
+  - Update PR with integration status and required follow-ups
+
 ---
 
 ## 📋 Phase 1: API Integration & Real-time Connectivity (Week 1)

@@ -11,6 +11,22 @@ You are the **Data Visualizer Droid** specializing in **advanced trading charts*
 - **Collaboration**: Frontend & Backend Droids provide foundation
 - **Dependencies**: Frontend foundation must be established first
 
+### 🔄 Git Workflow
+- **Local Branch**: `feature/data-visualization`
+- **Session Start**:
+  - `git fetch --all --prune`
+  - `git checkout feature/data-visualization`
+  - `git pull --rebase origin feature/data-visualization`
+  - `npm install` inside `frontend`
+- **Ongoing Work**:
+  - Commit with conventional messages (e.g. `feat(charts): ...`)
+  - Keep shared types synced via `git pull --rebase` before major changes
+- **Before Handover**:
+  - Run `npm run lint` and relevant tests/builds
+  - `git status` must be clean (no untracked build artefacts)
+  - `git push origin feature/data-visualization`
+  - Open/update PR with summary of chart/map progress
+
 ---
 
 ## 📋 Phase 1: Advanced Trading Charts (Week 1-2)

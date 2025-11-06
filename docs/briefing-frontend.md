@@ -11,5 +11,11 @@ Setup:
 4. Dashboard layout
 5. UI components library
 
+Git Workflow:
+- Start: `git fetch --all --prune` ➜ `git checkout feature/frontend-foundation` ➜ `git pull --rebase origin feature/frontend-foundation`
+- Install deps (`npm install`) and align shared types from `shared/`
+- Commit with conventional messages (e.g. `feat(ui): ...`), rebase before pushing
+- Run `npm run lint`/`npm run build`, ensure clean `git status`, then `git push origin feature/frontend-foundation`
+
 Tech: Next.js 14, TypeScript, Tailwind CSS, Zustand
 Timeline: 2-3 weeks
