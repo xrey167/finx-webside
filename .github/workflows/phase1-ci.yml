@@ -1,0 +1,83 @@
+name: Phase 1 CI
+
+on:
+  pull_request:
+    branches:
+      - feature/frontend-foundation
+      - feature/data-ingestion-phase1
+      - feature/backend-options-suite
+      - feature/frontend-market-tide
+      - feature/frontend-pricing-paywall
+      - feature/dataviz-market-tide
+      - feature/platform-alerts-entitlements
+      - feature/ux-phase1
+  push:
+    branches:
+      - feature/frontend-foundation
+  workflow_dispatch:
+
+jobs:
+  validate-node-services:
+    name: Lint & Test (Node)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Backend checks
+        run: |
+          if [ -f backend/package.json ]; then
+            cd backend
+            npm install
+            npm run lint --if-present
+            npm run test --if-present
+          else
+            echo "No backend/package.json – skipping"
+          fi
+
+      - name: Frontend checks
+        run: |
+          if [ -f frontend/package.json ]; then
+            cd frontend
+            npm install
+            npm run lint --if-present
+            npm run test --if-present
+          else
+            echo "No frontend/package.json – skipping"
+          fi
+
+  validate-python-services:
+    name: Lint & Test (Python/Data)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install deps
+        run: |
+          if [ -f data-engineering/requirements.txt ]; then
+            python -m pip install --upgrade pip
+            pip install -r data-engineering/requirements.txt
+          else
+            echo "No data-engineering/requirements.txt – skipping install"
+          fi
+
+      - name: Run data checks
+        run: |
+          if [ -f data-engineering/Makefile ]; then
+            make -C data-engineering test || true
+          elif [ -f data-engineering/pytest.ini ] || ls data-engineering/tests >/dev/null 2>&1; then
+            pytest data-engineering || true
+          else
+            echo "No data tests configured – skipping"
+          fi

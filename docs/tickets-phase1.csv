@@ -1,0 +1,27 @@
+Ticket ID,Epic,Title,Description Source,Branch,Status
+E1-DE1,E1 Data Ingestion,Options ETL Scheduler,phase1-implementation-plan.md#a1-options-spike-engine,feature/data-ingestion-phase1,Ready
+E1-DE2,E1 Data Ingestion,Political/Insider Dedup Service,phase1-architecture.md#24-political--insider-etl,feature/data-ingestion-phase1,Ready
+E1-DE3,E1 Data Ingestion,Event Calendar Normalizer,phase1-architecture.md#25-event-kalender,feature/data-ingestion-phase1,Ready
+E2-BE1,E2 Options Engine,Build /api/options/activity Endpoint,phase1-implementation-plan.md#a1-options-spike-engine,feature/backend-options-suite,Ready
+E2-BE2,E2 Options Engine,Trade Detail Aggregator & Timeline,phase1-implementation-plan.md#a1-options-spike-engine,feature/backend-options-suite,Ready
+E2-BE3,E2 Options Engine,Alert Configuration Storage,phase1-implementation-plan.md#a1-options-spike-engine,feature/backend-options-suite,Ready
+E3-BE1,E3 Market Tide,Sector Put/Call Aggregation Job,phase1-architecture.md#22-market-tide-aggregation,feature/backend-options-suite,Ready
+E3-DV1,E3 Market Tide,Market Tide Heatmap Visualization,phase1-implementation-plan.md#b2-market-tide-ux,feature/dataviz-market-tide,Ready
+E3-FR1,E3 Market Tide,Market Tide Dashboard UI,ux-links.md,feature/frontend-market-tide,Ready
+E4-BE1,E4 Periscope,Gamma Exposure Calculation Service,phase1-architecture.md#23-periscope-exposure,feature/backend-options-suite,Ready
+E4-DV1,E4 Periscope,Scenario Slider Visualization,phase1-implementation-plan.md#b3-periscope-ux,feature/dataviz-market-tide,Ready
+E4-FR1,E4 Periscope,Periscope UI Integration,ux-links.md,feature/frontend-market-tide,Ready
+E5-BE1,E5 Political/Insider,Impact Scoring Pipeline,phase1-implementation-plan.md#a4-political--insider-trading-tracker,feature/backend-options-suite,Ready
+E5-FR1,E5 Political/Insider,Political Feed UI,phase1-implementation-plan.md#b4-political--insider-feed,feature/frontend-market-tide,Ready
+E6-BE1,E6 Calendars,Calendar Subscription API,phase1-architecture.md#25-event-kalender,feature/backend-options-suite,Ready
+E6-FR1,E6 Calendars,Calendar UX & Notifications Settings,phase1-implementation-plan.md#b5-event-calendar-ux,feature/frontend-market-tide,Ready
+E6-AL1,E6 Calendars,Calendar Alert Scheduling,phase1-architecture.md#5-alerting-infrastruktur,feature/platform-alerts-entitlements,Ready
+E7-FS1,E7 Alerts,Redis Stream Worker,phase1-architecture.md#5-alerting-infrastruktur,feature/platform-alerts-entitlements,Ready
+E7-FS2,E7 Alerts,Push & Email Delivery,phase1-implementation-plan.md#anhang-c--pricing-trials--compliance,feature/platform-alerts-entitlements,Ready
+E7-FS3,E7 Alerts,Alert Rate Limiter,phase1-implementation-plan.md#a5-event-kalender-suite,feature/platform-alerts-entitlements,Ready
+E8-FS1,E8 Pricing,Stripe Sandbox Integration,phase1-implementation-plan.md#a6-pricing--packaging-phase1-launch,feature/platform-alerts-entitlements,Ready
+E8-FR1,E8 Pricing,Paywall UI Implementation,ux-links.md,feature/frontend-pricing-paywall,Ready
+E8-FS2,E8 Pricing,Entitlement Middleware,phase1-implementation-plan.md#a6-pricing--packaging-phase1-launch,feature/platform-alerts-entitlements,Ready
+E9-FS1,E9 Observability,Prometheus Dashboards,phase1-implementation-plan.md#anhang-c--pricing-trials--compliance,feature/platform-alerts-entitlements,Ready
+E9-FS2,E9 Observability,Audit Log Pipeline,phase1-architecture.md#7-security--compliance-notes,feature/platform-alerts-entitlements,Ready
+E9-FS3,E9 Observability,Legal Disclaimer Embedding,phase1-implementation-plan.md#anhang-c--pricing-trials--compliance,feature/platform-alerts-entitlements,Ready
